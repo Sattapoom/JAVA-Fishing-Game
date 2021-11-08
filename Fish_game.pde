@@ -11,13 +11,16 @@ void setup() {
   framecount = 1;
 }
 void mousePressed() {
-  foods.add(new Food(random(0,640),random(0,320),0.8));
+  fish.changeSpeedboots();
+}
+void mouseReleased() {
+  fish.resetSpeedboots();
 }
 void draw() {
-  frameRate(30);
+  frameRate(60);
   fish.drawGame();
   framecount += (int)random(0,2);
-  if(framecount%60 == 0){
+  if(framecount%120 == 0){
     foods.add(new Food(random(0,640),random(0,320),0.8));
   }
   

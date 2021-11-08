@@ -5,11 +5,18 @@ class Fish {
   PVector acceleration;
   float mass = 1;
   float maxMass = 3;
+  float speedboots = 0.2;
   Liquid liquid = new Liquid(0, height*1/5, width, height*4/5, 0.1);;
   Fish(){
     location = new PVector(random(0,width),height/2);
     velocity = new PVector(0,0);
     acceleration = new PVector(0,0);
+  }
+  void changeSpeedboots(){
+    speedboots = 0.8;
+  }
+  void resetSpeedboots(){
+    speedboots = 0.2;
   }
   void addMass(float m_) {
     mass += m_;
@@ -45,7 +52,7 @@ class Fish {
   void attract(PVector foodLocation) {
     PVector dir = PVector.sub(foodLocation,location);
     dir.normalize();
-    dir.mult(0.5);
+    dir.mult(speedboots);
     acceleration = dir;
   }
   void update() {
