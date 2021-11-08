@@ -1,26 +1,24 @@
 import java.util.Arrays;
 Fish fish;
-Cat cat;
 ArrayList<Food> foods;
-ArrayList<Cat_food> cat_foods;
+Integer framecount;
 void setup() {
   size(640,320);
   background(255);
-  //fish = new Fish();
-  //foods = new ArrayList<Food>();
   
-  cat = new Cat();
-  cat_foods = new ArrayList<Cat_food>();
+  fish = new Fish();
+  foods = new ArrayList<Food>();
+  framecount = 1;
 }
 void mousePressed() {
-  //Food f = new Food(mouseX,mouseY,0.8);
-  //foods.add(f);
-  
-  Cat_food f = new Cat_food(mouseX,mouseY,0.8);
-  cat_foods.add(f);
-  //cat.jump();
+  foods.add(new Food(random(0,640),random(0,320),0.8));
 }
 void draw() {
-  //fish.drawGame();
-  cat.drawGame();
+  frameRate(30);
+  fish.drawGame();
+  framecount += (int)random(0,2);
+  if(framecount%60 == 0){
+    foods.add(new Food(random(0,640),random(0,320),0.8));
+  }
+  
 }
